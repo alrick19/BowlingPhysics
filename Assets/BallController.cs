@@ -24,7 +24,7 @@ public class BallController : MonoBehaviour
 
     private void LaunchBall()
     {
-        if(!isBallLaunched)
+        if(isBallLaunched)
             return;
 
         isBallLaunched = true;
