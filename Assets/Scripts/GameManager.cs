@@ -1,9 +1,10 @@
 using TMPro;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private float score = 0;
+    [SerializeField] private float globalScore = 0;
     [SerializeField] private BallController ball;
     [SerializeField] private GameObject pinCollection;
     [SerializeField] private Transform pinAnchor;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     private void HandleReset()
     {
         ball.ResetBall();
+        SetScore(0);
         SetPins();
     }
     private void SetPins()
@@ -52,13 +54,18 @@ public class GameManager : MonoBehaviour
 
     private void IncrementScore()
     {
-        score++;
-        scoreText.text = $"Score: {score}";
+        SetScore(++globalScore);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void SetScore(float score)
+    {
+        globalScore = score;
+        scoreText.text = $"Score: {globalScore}";
     }
 }
