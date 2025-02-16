@@ -19,13 +19,22 @@ public class BallController : MonoBehaviour
     {
         // Grabbing a reference to RigidBody
         ballRB = GetComponent<Rigidbody>();
-
+        Cursor.lockState = CursorLockMode.Locked;
         // Add a listener to the OnSpacePressed event.
         // When the space key is pressed the LaunchBalllMethod will be called.
         inputManager.OnSpacePressed.AddListener(LaunchBall);
+        
+        ResetBall();
+
+    }
+
+    public void ResetBall()
+    {
+        isBallLaunched = false;
+        ballRB.isKinematic = true;
+        launchIndicator.gameObject.SetActive(true);
         transform.parent = ballAnchor;
         transform.localPosition = Vector3.zero;
-        ballRB.isKinematic = true;
     }
 
     private void LaunchBall()

@@ -22,11 +22,14 @@ public class Gutter : MonoBehaviour
         // store velocity magnitude
         float velocityMagnitude = ballRigidBody.linearVelocity.magnitude;
 
-        // reset both linear and angular 0> ball rotating on the ground when moving
-        ballRigidBody.linearVelocity = Vector3.zero;
-        ballRigidBody.angularVelocity = Vector3.zero;
+        if (triggeredBody.CompareTag("Ball"))
+        {
+            // reset both linear and angular 0> ball rotating on the ground when moving
+            ballRigidBody.linearVelocity = Vector3.zero;
+            ballRigidBody.angularVelocity = Vector3.zero;
 
-        // add force in forward direction of the gutter
-        ballRigidBody.AddForce(transform.forward * velocityMagnitude, ForceMode.VelocityChange);
+            // add force in forward direction of the gutter
+            ballRigidBody.AddForce(transform.forward * velocityMagnitude, ForceMode.VelocityChange);
+        }
     }
 }
