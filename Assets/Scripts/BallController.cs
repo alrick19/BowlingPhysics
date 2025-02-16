@@ -23,8 +23,9 @@ public class BallController : MonoBehaviour
         // Add a listener to the OnSpacePressed event.
         // When the space key is pressed the LaunchBalllMethod will be called.
         inputManager.OnSpacePressed.AddListener(LaunchBall);
-        
+
         ResetBall();
+
 
     }
 
@@ -32,9 +33,17 @@ public class BallController : MonoBehaviour
     {
         isBallLaunched = false;
         ballRB.isKinematic = true;
-        launchIndicator.gameObject.SetActive(true);
+
         transform.parent = ballAnchor;
+
         transform.localPosition = Vector3.zero;
+        launchIndicator.transform.localPosition = Vector3.zero;
+        // launchIndicator.transform.localPosition = new Vector3(0, 0, 3f);  
+        launchIndicator.gameObject.SetActive(true);
+
+        
+        Debug.Log($"[After Reset] LaunchIndicator Active: {launchIndicator.gameObject.activeSelf}");
+        Debug.Log($"[After Reset] LaunchIndicator Position: {launchIndicator.transform.position}");
     }
 
     private void LaunchBall()

@@ -57,12 +57,6 @@ public class GameManager : MonoBehaviour
         SetScore(++globalScore);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void SetScore(float score)
     {
         globalScore = score;
